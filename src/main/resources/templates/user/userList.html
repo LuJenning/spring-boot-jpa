@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>用户列表</title>
+</head>
+<body>
+<h1>用户列表</h1>
+<!--<form action="@{/list}" th:object="${user}" th:method="post">
+    <input type="text" th:filed="*{username}" placeholder="请输入username...">
+    <input type="submit" value="search">
+</form>-->
+<table>
+    <thead>
+        <tr>
+            <th>#</th>
+            <th>用户名</th>
+            <th>密码</th>
+            <th>年龄</th>
+            <th>编辑</th>
+            <th>删除</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr th:each="users : ${datas}"><!--相当于jstl中的c:forEach  -->
+            <th scope="row" th:text="${users.id}">1</th>
+            <td th:text="${users.username}"></td>
+            <td th:text="${users.password}"></td>
+            <td th:text="${users.age}"></td>
+            <td><a th:href="@{/toEdit(id=${users.id})}">Edit</a></td>
+            <td><a th:href="@{/delete(id=${users.id})}">Delete</a></td>
+        </tr>
+    </tbody>
+</table>
+<div th:include="page :: pager" th:remove="tag"></div>
+<a th:href="@{/toSave}" >添加用户</a>
+</body>
+</html>

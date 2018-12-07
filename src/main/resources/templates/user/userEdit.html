@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>修改界面</title>
+</head>
+<body>
+<h1>修改用户</h1>
+<form th:action="@{/edit}" th:object="${user}" method="post">
+    <input type="hidden" name="id" th:value="*{id}">
+    <input type="text" name="username" th:value="*{username}" placeholder="用户名.."><br>
+    <input type="password" name="password" th:value="*{password}" placeholder="密码.."><br>
+    <input type="text" name="age" th:value="*{age}" placeholder="年龄.."><br>
+    <input type="submit" value="提交">
+</form>
+<a href="/toSave" th:href="@{/list}">返回</a>
+</body>
+</html>
